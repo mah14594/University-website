@@ -9,6 +9,7 @@ import { UnService } from "./universities.service";
 })
 export class UniverstiesComponent implements OnInit {
   universitiesList: University[];
+  serachedInput = "";
   constructor(
     private unService: UnService,
     private wishService: WishListService
@@ -20,17 +21,20 @@ export class UniverstiesComponent implements OnInit {
   ngOnInit(): void {
     this.fetchData();
   }
+  fetchByCountry() {}
   fetchData() {
     const wishList = this.wishService.wishList;
-    this.unService.fetchData().subscribe((data) => {
-      data.forEach((item) => {
-        const checkListedItem = wishList.find((i) => i.name === item.name);
-        if (checkListedItem) {
-          item.wishListed = true;
-          item.checked = checkListedItem.checked;
-        }
+    this.unService
+      .fetchData("http://universities.hipolabs.com/search?name=middle")
+      .subscribe((data) => {
+        data.forEach((item) => {
+          const checkListedItem = wishList.find((i) => i.name === item.name);
+          if (checkListedItem) {
+            item.wishListed = true;
+            item.checked = checkListedItem.checked;
+          }
+        });
+        this.universitiesList = data;
       });
-      this.universitiesList = data;
-    });
   }
 }

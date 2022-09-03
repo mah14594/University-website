@@ -7,12 +7,20 @@ import { IUniversityDTO, University } from "../models/univeristy.model";
 export class UnService {
   constructor(private http: HttpClient) {}
   fetchData(): Observable<University[]> {
+    const universtiesNames = new Set();
     return this.http
       .get("http://universities.hipolabs.com/search?name=middle")
       .pipe(
-        map((data: IUniversityDTO[]) =>
-          data.map((uni, index) => ({ ...new University(uni), id: index }))
-        )
+        map((data: IUniversityDTO[]) => {
+          const list: University[] = [];
+          data.forEach((uni, index) => {
+            if (!universtiesNames.has(uni.name)) {
+              list.push({ ...new University(uni), id: index });
+              universtiesNames.add(uni.name);
+            }
+          });
+          return list;
+        })
       );
   }
 }
