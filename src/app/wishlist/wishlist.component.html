@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Uniersity Name</th>
+      <th scope="col">Country</th>
+      <th scope="col">Checked</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let uni of wishList">
+      <th scope="row">{{uni.name}}</th>
+      <td>{{uni.countryName}}</td>
+      <td style="cursor:pointer" (click)="toggleChecked(uni.id)">{{uni.checked ?'unCheck':'check'}}</td>
+      <td><button (click)="removeFromWishList(uni.id)">X</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+<div class="col-xs-12 col-md-6">
+  <div class="card hovercard">
+    <div class="card-background">
+      <img class="card-bkimg" alt="" src="">
+    </div>
+    <div class="card-info card-title">
+      <h4>{{university.name}}</h4>
+    </div>
+    <div class="card-info card-text">
+      <p>Country Name: {{university.countryName}}</p>
+      <p>Country Code: {{university.countryCode}}</p>
+    </div>
+  </div>
+  <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <a [href]="university.url" target="_blank" type="button" class="btn btn-primary" data-toggle="tab">
+        Go to website
+      </a>
+    </div>
+    <div class="btn-group" role="group">
+      <a *ngIf="!university.wishListed" (click)="addToWishList(university)" type="button" id="favorites"
+        class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        <span class="hidden-xs">Add to wish list</span>
+      </a>
+      <a *ngIf="university.wishListed" (click)="removeFromWishList(university.id)" type="button" id="favorites"
+        class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        <span class="hidden-xs">Remove from wish list</span>
+      </a>
+    </div>
+  </div>
