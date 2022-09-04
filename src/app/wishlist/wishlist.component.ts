@@ -17,6 +17,7 @@ export class WishlistComponent implements OnInit {
     this.wishService.removeFromWishList(id);
   }
   toggleChecked(id: number) {
+    console.log(this.wishList);
     this.wishService.toggleCheckItem(id);
   }
 }

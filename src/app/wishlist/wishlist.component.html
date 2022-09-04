@@ -8,11 +8,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let uni of wishList">
+    <tr *ngFor="let uni of wishList" [ngClass]="{'checked':uni.checked}">
       <th scope="row">{{uni.name}}</th>
       <td>{{uni.countryName}}</td>
-      <td style="cursor:pointer" (click)="toggleChecked(uni.id)">{{uni.checked ?'unCheck':'check'}}</td>
-      <td><button (click)="removeFromWishList(uni.id)">X</button></td>
+      <td (click)="toggleChecked(uni.id)"><span *ngIf="!uni.checked" class="glyphicon glyphicon-ok"></span>
+        <span class="glyphicon glyphicon-saved" *ngIf="uni.checked"></span>
+      </td>
+      <td><span class="glyphicon glyphicon-remove" (click)="removeFromWishList(uni.id)"></span></td>
     </tr>
   </tbody>
 </table>

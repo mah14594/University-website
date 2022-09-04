@@ -1,0 +1,15 @@
+.checked{
+  background-color: #0275d8;
+  color: white;
+}
+
+.glyphicon{
+  background-color: #0275d8;
+  color: white;
+  padding: 3%;
+  font-size:small;
+  cursor: pointer;
+  border-radius: 20%;
+  margin-top: -2px;
+  margin-left: 20px;
+}

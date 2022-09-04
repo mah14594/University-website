@@ -16,7 +16,9 @@
             <a>Visit Website</a>
           </button>
           <button *ngIf="!university.wishListed" (click)="addToWishList(university)" type="button"
-            class="btn btn-default" data-toggle="tab"><span class="glyphicon glyphicon-heart"></span>
+            class="btn btn-default">
+            <span *ngIf="!university.wishListed" class="glyphicon glyphicon-heart-empty"></span>
+            <span *ngIf="university.wishListed" class="glyphicon glyphicon-heart"></span>
             <span>Favourit This</span>
           </button>
           <button *ngIf="university.wishListed" (click)="removeFromWishList(university.id)" type="button"

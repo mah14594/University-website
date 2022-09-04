@@ -77,13 +77,17 @@ body {
 }
 
 .card-container .card .slide.slide2 .content button {
-    margin: 10px auto;
+    margin: 10px 5px;
     padding: 5px;
     border-radius: 10px;
     text-align: center;
     color: #414141;
+    font-weight: 600;
+
 }
 .card-container .card .slide.slide2 .content button a {
     text-decoration: none;
-
+}
+.glyphicon{
+  color: #2c73df;
 }
