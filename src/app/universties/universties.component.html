@@ -1,7 +1,15 @@
 <div class="container">
+  <form>
+    <div class="row">
+      <div class="input-group col-12">
+        <input [(ngModel)]="enteredCountry" name="searchInput" (input)="filterCountries($event.target.value)"
+          type="search" class="form-control" placeholder="Search by country" />
+      </div>
+    </div>
+  </form>
+  <h5 *ngIf="universitiesList.length<1" class="col-12 text-center text-primary">No Data Founds!</h5>
 
   <div class="row">
-
     <app-university *ngFor="let university of universitiesList" [university]="university"></app-university>
   </div>
 </div>

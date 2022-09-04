@@ -2,29 +2,39 @@ import { Component, OnInit } from "@angular/core";
 import { University } from "../models/univeristy.model";
 import { WishListService } from "../wishlist/wishList.service";
 import { UnService } from "./universities.service";
+
 @Component({
   selector: "app-universties",
   templateUrl: "./universties.component.html",
   styleUrls: ["./universties.component.css"],
 })
 export class UniverstiesComponent implements OnInit {
-  universitiesList: University[];
+  universitiesList: University[] = []; //avoid error of reading lenght of undefined array
+  enteredCountry: string = "";
+
   constructor(
     private unService: UnService,
     private wishService: WishListService
   ) {
     setInterval(() => {
+      console.log("re-fetch");
       this.fetchData();
-    }, 60000);
+    }, 30000);
   }
   ngOnInit(): void {
+    this.fetchData();
+  }
+
+  filterCountries(enteredCountry: string) {
     this.fetchData();
   }
 
   fetchData() {
     const wishList = this.wishService.wishList;
     this.unService
-      .fetchData("http://universities.hipolabs.com/search?name=middle")
+      .fetchData(
+        `http://universities.hipolabs.com/search?name=middle&country=${this.enteredCountry}`
+      )
       .subscribe((data) => {
         data.forEach((item) => {
           const checkListedItem = wishList.find((i) => i.name === item.name);

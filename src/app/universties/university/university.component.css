@@ -41,7 +41,7 @@ body {
 }
 
 .card-container .card:hover .slide.slide1{
-    transform: translateY(0px);
+    transform: translateY(10px);
 }
 
 .card-container .card .slide.slide2 {
@@ -51,47 +51,29 @@ body {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
-
     padding: 20px;
-
     box-sizing: border-box;
-
     transition: .8s;
-
     transform: translateY(-100px);
-
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 
 }
 
 .card-container .card:hover .slide.slide2{
-
     transform: translateY(0);
-
 }
 
 .card-container .card .slide.slide2::after{
-
     content: "";
-
     position: absolute;
-
     width: 30px;
-
     height: 4px;
-
     bottom: 15px;
-
     left: 50%;
-
     left: 50%;
-
     transform: translateX(-50%);
-
     background: #2c73df;
-
 }
 
 .card-container .card .slide.slide2 .content button {
