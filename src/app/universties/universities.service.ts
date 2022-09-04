@@ -5,11 +5,11 @@ import { map } from "rxjs/operators";
 import { IUniversityDTO, University } from "../models/univeristy.model";
 @Injectable({ providedIn: "root" })
 export class UnService {
-  constructor(private http: HttpClient) {}
-  fetchData(): Observable<University[]> {
+  constructor(private http: HttpClient) {}  
+  fetchData(url): Observable<University[]> {
     const universtiesNames = new Set();
     return this.http
-      .get("http://universities.hipolabs.com/search?name=middle")
+      .get(url)
       .pipe(
         map((data: IUniversityDTO[]) => {
           const list: University[] = [];

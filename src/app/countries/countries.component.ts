@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CountriesComponent implements OnInit {
 
   constructor() { }
-
+  
   ngOnInit(): void {
   }
 

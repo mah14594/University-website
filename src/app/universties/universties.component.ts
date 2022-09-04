@@ -9,7 +9,6 @@ import { UnService } from "./universities.service";
 })
 export class UniverstiesComponent implements OnInit {
   universitiesList: University[];
-  serachedInput = "";
   constructor(
     private unService: UnService,
     private wishService: WishListService
@@ -21,7 +20,7 @@ export class UniverstiesComponent implements OnInit {
   ngOnInit(): void {
     this.fetchData();
   }
-  fetchByCountry() {}
+
   fetchData() {
     const wishList = this.wishService.wishList;
     this.unService
