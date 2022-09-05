@@ -1,16 +1,16 @@
-import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppComponent } from "./app.component";
 import { RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
-import { UniverstiesComponent } from "./universties/universties.component";
-import { UniversityComponent } from "./universties/university/university.component";
-import { WishlistComponent } from "./wishlist/wishlist.component";
 import { NotFountComponent } from "./not-fount/not-fount.component";
-import { CountriesComponent } from "./countries/countries.component";
+import { UniversityComponent } from "./universties/university/university.component";
+import { UniverstiesComponent } from "./universties/universties.component";
+import { WishlistComponent } from "./wishlist/wishlist.component";
+import { CountriesListComponent } from "./universties/countries-list/countries-list.component";
 const routes = [
   { path: "", component: UniverstiesComponent },
   { path: "universities-list", component: UniverstiesComponent },
@@ -25,7 +25,7 @@ const routes = [
     UniversityComponent,
     WishlistComponent,
     NotFountComponent,
-    CountriesComponent,
+    CountriesListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.sideNav{
+  position:fixed;
+  background-color: #F8F9FA;
+  left: 0;
+  top:8%;
+  width: 200px;
+  height: 100%;
+}
+.sideNav>div{
+  margin-top:22%;
+  cursor: pointer;
+}

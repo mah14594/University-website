@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { University } from "../../models/univeristy.model";
 import { WishListService } from "../../wishlist/wishList.service";
+import { element } from "protractor";
 @Component({
   selector: "app-university",
   templateUrl: "./university.component.html",
@@ -18,5 +19,8 @@ export class UniversityComponent implements OnInit {
 
   removeFromWishList(id: number) {
     this.wishlistService.removeFromWishList(id);
+  }
+  function(event) {
+    console.log(event.target.innerText);
   }
 }
