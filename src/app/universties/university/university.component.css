@@ -22,9 +22,8 @@ body {
   margin-top: 30%;
 }
 
-
 .card-container .card .slide {
-    width: 80%;
+    width: 90%;
     height: 200px;
     margin: auto;
     transition: 0.5s;

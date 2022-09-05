@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { University } from "../models/univeristy.model";
 import { WishListService } from "../wishlist/wishList.service";
 import { UnService } from "./universities.service";
-
+import { Subscription } from "rxjs";
 @Component({
   selector: "app-universties",
   templateUrl: "./universties.component.html",
@@ -11,20 +12,30 @@ import { UnService } from "./universities.service";
 export class UniverstiesComponent implements OnInit {
   universitiesList: University[] = []; //avoid error of reading lenght of undefined array
   enteredName: string = "";
-  country: string = "";
   loading: boolean = false;
-
+  country: string = "";
+  private fethcDataSubscription: Subscription;
   constructor(
     private unService: UnService,
-    private wishService: WishListService
+    private wishService: WishListService,
+    private activatedRoute: ActivatedRoute
   ) {
     // setInterval(() => {
     //   console.log("re-fetch");
     //   this.fetchData();
     // }, 30000);
   }
+
   ngOnInit(): void {
-    this.fetchData();
+    this.activatedRoute.params.subscribe((data) => {
+      console.log(data["country"]);
+      if (data["country"] === "All Countries") {
+        this.country = "";
+      } else {
+        this.country = data["country"] || "";
+      }
+      this.fetchData();
+    });
   }
   filterByName() {
     this.fetchData();
@@ -33,7 +44,7 @@ export class UniverstiesComponent implements OnInit {
   fetchData() {
     const wishList = this.wishService.wishList;
     this.loading = true;
-    this.unService
+    this.fethcDataSubscription = this.unService
       .fetchData(
         `http://universities.hipolabs.com/search?name=${this.enteredName}&country=${this.country}`
       )
@@ -48,5 +59,10 @@ export class UniverstiesComponent implements OnInit {
         this.universitiesList = data;
         this.loading = false;
       });
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.fethcDataSubscription.unsubscribe();
   }
 }

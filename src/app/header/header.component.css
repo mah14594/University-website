@@ -1,3 +1,7 @@
+.navbar{
+  position: static;
+  background-color: rgb(248, 248, 248);
+}
 .navbar a{
   color: #0275d8;
   font-weight: 700;
@@ -6,6 +10,7 @@
     color: black;
     transition: 0.5s all ease-in;
     text-decoration: none  #0275d8;
+    margin-left: 20px;
 }
 
 .active-class{

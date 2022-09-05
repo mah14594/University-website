@@ -5,3 +5,10 @@
 .input-group input{
   border-radius: 5px;
 }
+.main{
+  margin-top: 5%;
+}
+.col-lg-2{
+  margin-top: -19px;
+  margin-left: -20px;
+}

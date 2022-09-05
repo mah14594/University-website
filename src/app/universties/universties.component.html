@@ -1,18 +1,23 @@
-<aside>
-
-</aside>
-<div class="container">
-  <form>
-    <div class="row">
-      <div class="input-group col-12">
-        <input [(ngModel)]="enteredName" name="searchInput" (input)="filterByName()" type="search" class="form-control"
-          placeholder="Search by name" />
-      </div>
-    </div>
-  </form>
-  <h5 *ngIf="universitiesList.length<1 && !loading" class="col-12 text-center text-primary">No Data Founds!</h5>
-  <h5 *ngIf="loading" class="col-12 text-center text-primary">Data is Loading...</h5>
+<div class="container-fluid">
   <div class="row">
-    <app-university *ngFor="let university of universitiesList" [university]="university"></app-university>
+    <div class="col-xs-3  col-lg-2">
+      <app-countries-list></app-countries-list>
+    </div>
+    <div class="main col-xs-9  col-lg-10">
+      <div class="container">
+        <form>
+          <div class="input-group col-12">
+            <input [(ngModel)]="enteredName" name="searchInput" (input)="filterByName()" type="search"
+              class="form-control" placeholder="Search by name" />
+          </div>
+        </form>
+        <h5 *ngIf="universitiesList.length<1 && !loading" class="col-12 text-center text-primary">No Data Founds!</h5>
+        <h5 *ngIf="loading" class="col-12 text-center text-primary">Data is Loading...</h5>
+        <div class="row" *ngIf="!loading && universitiesList.length>0 ">
+          <app-university *ngFor="let university of universitiesList" [university]="university"></app-university>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

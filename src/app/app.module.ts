@@ -11,9 +11,11 @@ import { UniversityComponent } from "./universties/university/university.compone
 import { UniverstiesComponent } from "./universties/universties.component";
 import { WishlistComponent } from "./wishlist/wishlist.component";
 import { CountriesListComponent } from "./universties/countries-list/countries-list.component";
+import { CountryComponent } from "./universties/countries-list/country/country.component";
 const routes = [
   { path: "", component: UniverstiesComponent },
   { path: "universities-list", component: UniverstiesComponent },
+  { path: "universities-list/:country", component: UniverstiesComponent },
   { path: "wish-list", component: WishlistComponent },
   { path: "**", component: NotFountComponent },
 ];
@@ -26,6 +28,7 @@ const routes = [
     WishlistComponent,
     NotFountComponent,
     CountriesListComponent,
+    CountryComponent,
   ],
   imports: [
     BrowserModule,

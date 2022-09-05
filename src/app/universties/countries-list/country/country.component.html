@@ -1,0 +1,4 @@
+<div [ngClass]="{'active':country===selectedCountry,'inActive':'country!==selectedCountry'}"
+  (click)="selectCountry($event.target.innerText)">
+  {{country}}
+</div>

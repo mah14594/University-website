@@ -1,9 +1,4 @@
-<!-- <span class="glyphicon glyphicon-arrow-right">Countries</span> -->
-<nav class="sideNav container bg-light-gray">
-  <!-- <span class="glyphicon glyphicon-remove"></span> -->
-  <div>All Countries</div>
-  <div>United Kingdom</div>
-  <div>United States</div>
-  <div>Canada</div>
-  <div>Germany</div>
+<nav class="sideNav container">
+  <h5 class="text-left col-12">Search by Country:</h5>
+  <app-country [country]="country" *ngFor="let country of countries"></app-country>
 </nav>

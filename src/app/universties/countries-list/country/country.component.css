@@ -1,0 +1,15 @@
+div{
+  text-decoration: none blue;
+  margin-top: 50px;
+  cursor: pointer;
+  transition: 0.9s all ease-in;
+}
+.inActive{
+  color:black
+}
+.active{
+  color: blue;
+  font-size: larger;
+  font-weight: 600;
+}
+
