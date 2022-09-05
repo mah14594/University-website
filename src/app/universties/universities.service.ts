@@ -6,18 +6,18 @@ import { IUniversityDTO, University } from "../models/univeristy.model";
 @Injectable({ providedIn: "root" })
 export class UnService {
   constructor(private http: HttpClient) {}
-  fetchData(url): Observable<University[]> {
+  fetchData(url: string): Observable<University[]> {
     const universtiesNames = new Set();
     return this.http.get(url).pipe(
       map((data: IUniversityDTO[]) => {
-        const list: University[] = [];
+        const uniqueNameslist: University[] = [];
         data.forEach((uni, index) => {
           if (!universtiesNames.has(uni.name)) {
-            list.push({ ...new University(uni), id: index });
+            uniqueNameslist.push({ ...new University(uni), id: index });
             universtiesNames.add(uni.name);
           }
         });
-        return list;
+        return uniqueNameslist;
       })
     );
   }

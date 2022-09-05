@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { University } from "../../models/univeristy.model";
 import { WishListService } from "../../wishlist/wishList.service";
-
 @Component({
   selector: "app-university",
   templateUrl: "./university.component.html",
@@ -12,6 +11,7 @@ export class UniversityComponent implements OnInit {
   constructor(private wishlistService: WishListService) {}
 
   ngOnInit(): void {}
+
   addToWishList(uni: University) {
     this.wishlistService.addToWishList(uni);
   }

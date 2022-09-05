@@ -11,28 +11,30 @@ import { UnService } from "./universities.service";
 export class UniverstiesComponent implements OnInit {
   universitiesList: University[] = []; //avoid error of reading lenght of undefined array
   enteredCountry: string = "";
-
+  loading: boolean = false;
   constructor(
     private unService: UnService,
     private wishService: WishListService
   ) {
-    setInterval(() => {
-      console.log("re-fetch");
-      this.fetchData();
-    }, 30000);
+    // setInterval(() => {
+    //   console.log("re-fetch");
+    //   this.fetchData();
+    // }, 30000);
   }
   ngOnInit(): void {
     this.fetchData();
   }
-
-  filterCountries(enteredCountry: string) {
+  filterCountries() {
     this.fetchData();
   }
 
   fetchData() {
     const wishList = this.wishService.wishList;
+    this.loading = true;
     this.unService
+
       .fetchData(
+        // "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json"
         `http://universities.hipolabs.com/search?name=middle&country=${this.enteredCountry}`
       )
       .subscribe((data) => {
@@ -44,6 +46,7 @@ export class UniverstiesComponent implements OnInit {
           }
         });
         this.universitiesList = data;
+        this.loading = false;
       });
   }
 }
