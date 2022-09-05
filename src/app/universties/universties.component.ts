@@ -10,8 +10,10 @@ import { UnService } from "./universities.service";
 })
 export class UniverstiesComponent implements OnInit {
   universitiesList: University[] = []; //avoid error of reading lenght of undefined array
-  enteredCountry: string = "";
+  enteredName: string = "";
+  country: string = "";
   loading: boolean = false;
+
   constructor(
     private unService: UnService,
     private wishService: WishListService
@@ -24,7 +26,7 @@ export class UniverstiesComponent implements OnInit {
   ngOnInit(): void {
     this.fetchData();
   }
-  filterCountries() {
+  filterByName() {
     this.fetchData();
   }
 
@@ -32,10 +34,8 @@ export class UniverstiesComponent implements OnInit {
     const wishList = this.wishService.wishList;
     this.loading = true;
     this.unService
-
       .fetchData(
-        // "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json"
-        `http://universities.hipolabs.com/search?name=middle&country=${this.enteredCountry}`
+        `http://universities.hipolabs.com/search?name=${this.enteredName}&country=${this.country}`
       )
       .subscribe((data) => {
         data.forEach((item) => {

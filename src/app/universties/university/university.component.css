@@ -87,6 +87,7 @@ body {
 }
 .card-container .card .slide.slide2 .content button a {
     text-decoration: none;
+    color: white;
 }
 .glyphicon{
   color: #2c73df;

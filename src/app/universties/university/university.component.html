@@ -12,8 +12,8 @@
       </div>
       <div class="slide slide2">
         <div class="content">
-          <button class="btn">
-            <a>Visit Website</a>
+          <button class="btn btn-primary">
+            <a [href]="university.url" target="_blank">Visit Website</a>
           </button>
           <button *ngIf="!university.wishListed" (click)="addToWishList(university)" type="button"
             class="btn btn-default">
